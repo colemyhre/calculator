@@ -1,6 +1,7 @@
 
-let currentValue = 0;
-let displayValue = 8;
+let currentValue = 1;
+let displayValue;
+let operator;
 
 
 
@@ -43,4 +44,26 @@ clear.addEventListener('click', () => {
     display.textContent = '';
 })
 
+let addBtn = document.querySelector('.add');
+addBtn.addEventListener('click', () => {
+    operator = 'add';
+    console.log(operator);
+})
 
+let subtractBtn = document.querySelector('.subtract');
+subtractBtn.addEventListener('click', () => {
+    operator = 'subtract';
+    console.log(operator);
+})
+
+let multiplyBtn = document.querySelector('.multiply');
+multiplyBtn.addEventListener('click', () => {
+    operator = 'multiply';
+    console.log(operator);
+})
+
+let divideBtn = document.querySelector('.divide');
+divideBtn.addEventListener('click', () => {
+    operator = 'divide';
+    console.log(operator);
+})
