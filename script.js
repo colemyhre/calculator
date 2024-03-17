@@ -42,28 +42,34 @@ clear.addEventListener('click', () => {
     displayValue=0;
     currentValue=0;
     display.textContent = '';
-})
+});
 
 let addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', () => {
     operator = 'add';
     console.log(operator);
-})
+});
 
 let subtractBtn = document.querySelector('.subtract');
 subtractBtn.addEventListener('click', () => {
     operator = 'subtract';
     console.log(operator);
-})
+});
 
 let multiplyBtn = document.querySelector('.multiply');
 multiplyBtn.addEventListener('click', () => {
     operator = 'multiply';
     console.log(operator);
-})
+});
 
 let divideBtn = document.querySelector('.divide');
 divideBtn.addEventListener('click', () => {
     operator = 'divide';
     console.log(operator);
-})
+});
+
+let equals = document.querySelector('.equals');
+equals.addEventListener('click', () => {
+    operator = 'equals';
+    console.log(operator);
+});
