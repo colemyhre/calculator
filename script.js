@@ -1,7 +1,8 @@
 
-let currentValue = 1;
+let currentValue = 0;
 let displayValue;
-let operator;
+let operator = '';
+let lastClick = '';
 
 
 
@@ -21,6 +22,31 @@ function divide(num1, num2) {
     return num1/num2;
 }
 
+function operate(num1, num2) {
+    num1 = Number(num1);
+    num2 = Number(num2);
+    
+    switch (operator) {
+        case 'add':
+          return add(num1,num2);
+          break;
+        case 'subtract':
+            return subtract(num1,num2);
+            break;
+        case 'multiply':
+            return multiply(num1,num2);
+          break;
+        case 'divide':
+            return divide(num1,num2);
+          break; 
+        case 'equals':
+            break;
+        default:
+          console.log(`Oops!`);
+      }
+      
+}
+
 let display = document.querySelector('.display');
 
 let numbers = document.querySelector('.numbers');
@@ -29,9 +55,34 @@ for (let i=0; i<10; i++) {
             digit.classList.add('number');
             digit.textContent = i;
             
+            // digit.addEventListener('click', () => {
+            //     if (lastClick !== '') {
+            //         displayValue=digit.textContent;
+            //         console.log(typeof(displayValue));
+            //         operator = lastClick;
+            //         lastClick = '';
+            //     } else if (lastClick == '' && operator == '') {
+
+            //     }
+            //     else {
+            //         displayValue = displayValue + digit.textContent;
+            //         console.log(typeof(displayValue));
+            //     }
+            //     display.textContent = displayValue;
+            // })
+
             digit.addEventListener('click', () => {
-                displayValue=digit.textContent;
-                console.log(displayValue);
+                if (lastClick == '') {
+                    displayValue = digit.textContent;
+                    lastClick = 'number';
+                } else if (lastClick !== 'number') {
+                    displayValue=digit.textContent;
+                    operator = lastClick;
+                    lastClick = 'number';
+                }
+                else {
+                    displayValue = displayValue + digit.textContent;
+                }
                 display.textContent = displayValue;
             })
             numbers.appendChild(digit);
@@ -41,35 +92,89 @@ let clear = document.querySelector('.clear');
 clear.addEventListener('click', () => {
     displayValue=0;
     currentValue=0;
+    lastClick = '';
+    operator = '';
     display.textContent = '';
 });
 
-let addBtn = document.querySelector('.add');
+// let operators = document.getElementsByClassName('.operator');
+// operators.forEach(function(operatorButton) {
+//     operatorButton.addEventListener("click", () => {
+//         console.log(operatorButton.textContent);
+//         console.log(typeof(operatorButton.textContent));
+//     });
+// });
+
+// let operators = document.querySelectorAll('.operators');
+// operators.forEach(function(operatorButton) {
+//     operatorButton.addEventListener("click", () => {
+//         console.log(operatorButton.textContent);
+//         console.log(typeof(operatorButton.textContent));
+//     });
+// });
+
+let addBtn = document.querySelector('#add');
 addBtn.addEventListener('click', () => {
-    operator = 'add';
-    console.log(operator);
+    lastClick = 'add';
+    
+    if (operator !== '') {    
+        currentValue = operate(currentValue, displayValue);
+        displayValue = currentValue;
+        display.textContent = displayValue;
+    }
+    else {    
+        currentValue = displayValue;
+    }
+
+    
 });
 
-let subtractBtn = document.querySelector('.subtract');
+let subtractBtn = document.querySelector('#subtract');
 subtractBtn.addEventListener('click', () => {
-    operator = 'subtract';
-    console.log(operator);
+    lastClick = 'subtract';
+    if (operator !== '') {    
+        currentValue = operate(currentValue, displayValue);
+        displayValue = currentValue;
+        display.textContent = displayValue;
+    }
+    else {    
+        currentValue = displayValue;
+    }
 });
 
-let multiplyBtn = document.querySelector('.multiply');
+let multiplyBtn = document.querySelector('#multiply');
 multiplyBtn.addEventListener('click', () => {
-    operator = 'multiply';
-    console.log(operator);
+    lastClick = 'multiply';
+    if (operator !== '') {    
+        currentValue = operate(currentValue, displayValue);
+        displayValue = currentValue;
+        display.textContent = displayValue;
+    }
+    else {    
+        currentValue = displayValue;
+    }
 });
 
-let divideBtn = document.querySelector('.divide');
+let divideBtn = document.querySelector('#divide');
 divideBtn.addEventListener('click', () => {
-    operator = 'divide';
-    console.log(operator);
+    lastClick = 'divide';
+    if (operator !== '') {    
+        currentValue = operate(currentValue, displayValue);
+        displayValue = currentValue;
+        display.textContent = displayValue;
+    }
+    else {    
+        currentValue = displayValue;
+    }
 });
 
-let equals = document.querySelector('.equals');
+let equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
-    operator = 'equals';
-    console.log(operator);
+    lastClick = 'equals';
+    currentValue = operate(currentValue, displayValue);
+    displayValue = currentValue;
+    display.textContent = displayValue;
+    currentValue=0;
+    lastClick = '';
+    operator = '';
 });
