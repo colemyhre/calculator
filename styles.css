@@ -1,9 +1,49 @@
+body {
+    margin: auto;
+    width: 40%;
+    align-items: center;
+}
+
+.operators {
+    display: flex;
+    flex-direction: column; 
+    flex: 1 0 100%;
+    gap: 5px;
+}
+
 button {
     padding: 10px;
-    border: 1px solid red;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 30px;
+    height: 100px;
+    width: 100px;
 }
 
 .display {
     padding: 20px;
-    border: 1px solid blue;
+    border: 3px solid black;
+    width: 30vw;
+    margin: 10px;
+    align-self: center;
+    font-size: 30px;
+}
+
+.math {
+    display: flex;
+    flex: auto;
+    height: 65vh;
+    justify-content:flex-start;
+}
+
+
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 70%;
+    height: 50px;
+    gap: 5px;
+    padding: 10px;
+    
 }

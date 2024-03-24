@@ -19,6 +19,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 == 0) {
+        return "ERROR: CANNOT DIVIDE BY ZERO";
+    }
     return num1/num2;
 }
 
@@ -50,26 +53,14 @@ function operate(num1, num2) {
 let display = document.querySelector('.display');
 
 let numbers = document.querySelector('.numbers');
-for (let i=0; i<10; i++) {
+for (let i=0; i<11; i++) {
     let digit = document.createElement('button');
             digit.classList.add('number');
-            digit.textContent = i;
-            
-            // digit.addEventListener('click', () => {
-            //     if (lastClick !== '') {
-            //         displayValue=digit.textContent;
-            //         console.log(typeof(displayValue));
-            //         operator = lastClick;
-            //         lastClick = '';
-            //     } else if (lastClick == '' && operator == '') {
-
-            //     }
-            //     else {
-            //         displayValue = displayValue + digit.textContent;
-            //         console.log(typeof(displayValue));
-            //     }
-            //     display.textContent = displayValue;
-            // })
+            if (i==10) {
+                digit.textContent = '.';
+            } else {
+                digit.textContent = i;
+            }
 
             digit.addEventListener('click', () => {
                 if (lastClick == '') {
@@ -88,6 +79,7 @@ for (let i=0; i<10; i++) {
             numbers.appendChild(digit);
 }
 
+
 let clear = document.querySelector('.clear');
 clear.addEventListener('click', () => {
     displayValue=0;
@@ -97,21 +89,6 @@ clear.addEventListener('click', () => {
     display.textContent = '';
 });
 
-// let operators = document.getElementsByClassName('.operator');
-// operators.forEach(function(operatorButton) {
-//     operatorButton.addEventListener("click", () => {
-//         console.log(operatorButton.textContent);
-//         console.log(typeof(operatorButton.textContent));
-//     });
-// });
-
-// let operators = document.querySelectorAll('.operators');
-// operators.forEach(function(operatorButton) {
-//     operatorButton.addEventListener("click", () => {
-//         console.log(operatorButton.textContent);
-//         console.log(typeof(operatorButton.textContent));
-//     });
-// });
 
 let addBtn = document.querySelector('#add');
 addBtn.addEventListener('click', () => {
